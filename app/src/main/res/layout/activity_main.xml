@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="340dp"
+        android:layout_height="323dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.326">
+
+        <Button
+            android:id="@+id/analysis"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:layout_marginTop="30px"
+            android:backgroundTint="@color/Gold"
+            android:onClick="startMarketAnalysisActivity"
+            android:text="Анализ рынка"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:layout_marginTop="30px"
+            android:backgroundTint="@color/Gold"
+            android:text="Инвестировать"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/traning"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:layout_marginTop="30px"
+            android:backgroundTint="@color/Gold"
+            android:onClick="startTraningActivity"
+            android:text="Обучение"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/support"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:layout_marginTop="30px"
+            android:backgroundTint="@color/Gold"
+            android:text="Поддержка"
+            android:textColor="@color/black"
+            android:onClick="startSupportActivity"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="204dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:src=" @drawable/menu_invest" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/openChatButton"
+        android:onClick = "startMainChatActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:clickable="true"
+        android:foregroundTint="@color/black"
+        app:backgroundTint="@color/Gold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/open_chat"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
