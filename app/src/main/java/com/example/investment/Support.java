@@ -20,6 +20,9 @@ import android.widget.Toast;
 import androidx.fragment.app.DialogFragment;
 import androidx.annotation.NonNull;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 
 public class Support extends AppCompatActivity {
 
@@ -27,6 +30,8 @@ public class Support extends AppCompatActivity {
     EditText editEmail;
     EditText editQuestion;
     Button sendButton;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("SupportQuestion:");
 
 
 
@@ -40,13 +45,24 @@ public class Support extends AppCompatActivity {
         editQuestion = findViewById(R.id.question);
 
     }
-    public void sendData(View view)
-    {
+    private void clearAllEditText(){
         editName.setText("");
         editEmail.setText("");
         editQuestion.setText("");
+    }
+    public String generateKey(){
+        return myRef.push().getKey();
+    }
+    public void sendData(View view)
+    {
 
         Toast toast = Toast.makeText(getApplicationContext(),"Вопрос отправлен! Ответим за 24ч!",Toast.LENGTH_LONG);
+        SupportQuestion supportQuestion = new SupportQuestion(editName.getText().toString(),editEmail.getText().toString(),editQuestion.getText().toString());
+
+        myRef.child(generateKey()).setValue(supportQuestion);
+
+        clearAllEditText();
         toast.show();
+
     }
 }

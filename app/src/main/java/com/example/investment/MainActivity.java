@@ -35,11 +35,8 @@ public class MainActivity extends AppCompatActivity {
     public void startMainChatActivity(View view){
 //        Intent intent = new Intent(this, MainChat.class);
 //        startActivity(intent);
-        // Write a message to the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
 
-        myRef.setValue("Hello, World!");
+
     }
 
 }
