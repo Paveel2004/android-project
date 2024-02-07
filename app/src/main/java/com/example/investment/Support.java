@@ -33,8 +33,6 @@ public class Support extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("SupportQuestion:");
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +56,7 @@ public class Support extends AppCompatActivity {
 
         Toast toast = Toast.makeText(getApplicationContext(),"Вопрос отправлен! Ответим за 24ч!",Toast.LENGTH_LONG);
         SupportQuestion supportQuestion = new SupportQuestion(editName.getText().toString(),editEmail.getText().toString(),editQuestion.getText().toString());
-
+        
         myRef.child(generateKey()).setValue(supportQuestion);
 
         clearAllEditText();
