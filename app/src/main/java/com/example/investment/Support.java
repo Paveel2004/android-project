@@ -19,12 +19,15 @@ import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.annotation.NonNull;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.OnLifecycleEvent;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-public class Support extends AppCompatActivity {
+public class Support extends AppCompatActivity implements LifecycleObserver {
 
     EditText editName;
     EditText editEmail;
@@ -32,7 +35,12 @@ public class Support extends AppCompatActivity {
     Button sendButton;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("SupportQuestion:");
-
+    @Override
+    public void onPause() {
+        super.onPause();
+        Toast toast = Toast.makeText(getApplicationContext(),"♥ Хорошего дня! ♥",Toast.LENGTH_LONG);
+        toast.show();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +51,7 @@ public class Support extends AppCompatActivity {
         editQuestion = findViewById(R.id.question);
 
     }
+
     private void clearAllEditText(){
         editName.setText("");
         editEmail.setText("");
@@ -63,4 +72,6 @@ public class Support extends AppCompatActivity {
         toast.show();
 
     }
+
+
 }
