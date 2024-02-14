@@ -8,6 +8,7 @@
     tools:context=".MainChat">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:orientation="horizontal"
@@ -16,27 +17,37 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/textMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@color/white"
             android:ems="10"
+            android:hint="Введите сообщение"
             android:inputType="text"
             android:textColor="@color/white"
-            android:hint="Введите сообщение"
-            android:textColorHint="@color/white"/>
+            android:textColorHint="@color/white" />
 
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/sendMessage"
             android:layout_width="38dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@color/Gold"
             android:text="Отправить"
-            android:textSize="12dp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="12dp" />
 
     </LinearLayout>
+
+    <ListView
+        android:id="@+id/messageListView"
+        android:layout_width="409dp"
+        android:layout_height="675dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
