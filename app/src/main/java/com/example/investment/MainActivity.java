@@ -12,25 +12,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Toast toast = Toast.makeText(getApplicationContext(),"Вопрос отправлен! Ответим за 24ч!",Toast.LENGTH_LONG);
-        toast.show();
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
     }
     public void startMarketAnalysisActivity(View view) {
         Intent intent = new Intent(this, MarketAnalysis.class);
         startActivity(intent);
     }
-
     public void startTraningActivity(View view){
         Intent intent = new Intent(this, Training.class);
         startActivity(intent);
@@ -40,10 +30,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void startMainChatActivity(View view){
-//        Intent intent = new Intent(this, MainChat.class);
-//        startActivity(intent);
-
-
+       Intent intent = new Intent(this, MainChat.class);
+       startActivity(intent);
     }
 
 }
