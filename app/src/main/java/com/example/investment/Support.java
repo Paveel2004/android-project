@@ -34,7 +34,7 @@ public class Support extends AppCompatActivity implements LifecycleObserver {
     EditText editQuestion;
     Button sendButton;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("SupportQuestion:");
+    DatabaseReference supportRef = database.getReference("SupportQuestion:");
     @Override
     public void onPause() {
         super.onPause();
@@ -57,16 +57,13 @@ public class Support extends AppCompatActivity implements LifecycleObserver {
         editEmail.setText("");
         editQuestion.setText("");
     }
-    public String generateKey(){
-        return myRef.push().getKey();
-    }
     public void sendData(View view)
     {
 
         Toast toast = Toast.makeText(getApplicationContext(),"Вопрос отправлен! Ответим за 24ч!",Toast.LENGTH_LONG);
         SupportQuestion supportQuestion = new SupportQuestion(editName.getText().toString(),editEmail.getText().toString(),editQuestion.getText().toString());
-        
-        myRef.child(generateKey()).setValue(supportQuestion);
+
+        supportRef.child(FirebaseHelper.generateKey(supportRef)).setValue(supportQuestion);
 
         clearAllEditText();
         toast.show();

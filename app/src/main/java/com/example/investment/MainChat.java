@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -19,6 +22,9 @@ public class MainChat extends AppCompatActivity {
     private ListView messageListView;
     private ArrayAdapter<String> adapter;
     private ArrayList<String> messages;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference chatRef = database.getReference("ChatMessage");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,9 +40,18 @@ public class MainChat extends AppCompatActivity {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                sendMessage();
                 addMessageToList();
+
             }
         });
+    }
+    private void sendMessage(){
+        String message = editText.getText().toString().trim();
+        if(!message.isEmpty()){
+            chatRef.child(FirebaseHelper.generateKey(chatRef)).setValue(message);
+        }
+
     }
     private void addMessageToList(){
         String message = editText.getText().toString().trim();
